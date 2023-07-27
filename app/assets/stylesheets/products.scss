@@ -80,6 +80,7 @@ main section.categories-show {
       div {
         display: flex;
         justify-content: space-between;
+        flex-direction: row-reverse;
         padding: 0.5em;
         form {
           display: inline-block;

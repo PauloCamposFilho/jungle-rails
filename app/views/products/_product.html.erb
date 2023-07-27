@@ -6,15 +6,15 @@
       <span><%= humanized_money_with_symbol product.price %></span>
     </h1>
   <% end%>
-  <div class='product__button--actions'>
-  <% if product.quantity.zero? %>
-    <span class='btn btn-danger'>Sold Out</span>
-  <% end %>
+  <div class='product__button--actions'>  
   <%= button_to add_item_cart_path(product_id: product.id),
     class: product.quantity > 0 ? 'btn' : 'btn disabled' ,
     disabled: product.quantity.zero?,
     method: :post do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
+  <% end %>
+  <% if product.quantity.zero? %>
+    <span class='btn btn-danger'>Sold Out</span>
   <% end %>
   </div>
 </article>
