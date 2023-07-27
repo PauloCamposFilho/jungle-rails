@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_items = LineItem.where(order_id: @order.id).includes(:product)
+    @total_price = @line_items.sum(&:total_price_cents)
   end
 
   def create
