@@ -1,5 +1,5 @@
 <div class="dashboard">
-  <div class="container">  
+  <div class="container">
     <h3>
       Admin Panel
       <small class="text-muted">Dashboard</small>
@@ -9,11 +9,13 @@
         <h2>CATEGORIES:</h2>
         <p><%= @category.size %> Categories</p>
         <% if @category.size > 0 %>
-          <ul>
+        <div class="category-list">
+
           <% @category.each do |cat| %>
-            <li> <%= link_to cat.name, cat %> </li>
+            <%= link_to cat.name, cat, class: 'btn btn-primary' %>
           <% end %>
-          </ul>
+
+        </div>
         <% end %>
       </div>
 
