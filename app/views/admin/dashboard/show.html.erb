@@ -1,17 +1,26 @@
-<div class="container">  
-  <h3>
-    Admin Panel
-    <small class="text-muted">Dashboard</small>
-  </h3>
-  <div class="row mt-4">
-    <div class="col-md-6">
-      <h2>CATEGORIES:</h2>
-      <p><%= @category_count %> Categories</p>
-    </div>
+<div class="dashboard">
+  <div class="container">  
+    <h3>
+      Admin Panel
+      <small class="text-muted">Dashboard</small>
+    </h3>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2>CATEGORIES:</h2>
+        <p><%= @category.size %> Categories</p>
+        <% if @category.size > 0 %>
+          <ul>
+          <% @category.each do |cat| %>
+            <li> <%= link_to cat.name, cat %> </li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
 
-    <div class="col-md-6">
-      <h2>PRODUCTS:</h2>
-      <p><%= @product_count %> Products</p>
+      <div class="col-md-6">
+        <h2>PRODUCTS:</h2>
+        <p><%= @product_count %> Products</p>
+      </div>
     </div>
   </div>
 </div>
