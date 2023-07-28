@@ -112,3 +112,9 @@ form.button_to {
 .text-danger {
   color: #f38792 !important;
 }
+
+.navbar-nav {
+  .nav-item.login {
+    margin-top: 4px;
+  }
+}
