@@ -21,8 +21,8 @@ RSpec.describe Product, type: :model do
         quantity: 10,
         category_id: @category.id
       )
-      @product.valid?
-      expect(@product.errors[:name]).to include("can't be blank")
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
     it 'returns invalid without a price' do
@@ -33,8 +33,12 @@ RSpec.describe Product, type: :model do
         quantity: 10,
         category_id: @category.id
       )
-      @product.valid?
-      expect(@product.errors[:price]).to include("can't be blank")
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include(
+        "Price cents is not a number",
+        "Price is not a number",
+        "Price can't be blank"
+      )
     end
 
     it 'returns invalid without a quantity' do
@@ -45,8 +49,8 @@ RSpec.describe Product, type: :model do
         # quantity: 10,
         category_id: @category.id
       )
-      @product.valid?
-      expect(@product.errors[:quantity]).to include("can't be blank")
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include("Quantity can't be blank")
     end
 
     it 'returns invalid without a category' do
@@ -56,8 +60,11 @@ RSpec.describe Product, type: :model do
         quantity: 10,
         # category_id: @category.id
       )
-      @product.valid?
-      expect(@product.errors[:category]).to include("can't be blank")
+      expect(@product).not_to be_valid
+      expect(@product.errors.full_messages).to include(
+        "Category must exist",
+        "Category can't be blank"
+      )
     end
   end
 end
